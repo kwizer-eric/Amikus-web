@@ -1,0 +1,38 @@
+.intro {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-warm-beige);
+    color: var(--color-midnight-navy);
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    /* Narrower container for reading */
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.heading {
+    font-family: var(--font-cormorant);
+    font-size: var(--font-h2);
+    font-weight: 300;
+    color: var(--color-terracotta);
+}
+
+.text {
+    font-family: var(--font-inter);
+    font-size: 1.125rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.actions {
+    margin-top: 1rem;
+}
