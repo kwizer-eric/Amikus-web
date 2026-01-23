@@ -2,28 +2,23 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Search, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import clsx from 'clsx';
 import Button from '../ui/Button';
 import styles from './Navbar.module.css';
 
 const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Rooms & Suites', href: '/rooms' },
-    { name: 'Dining', href: '/dining' },
-    { name: 'Wellness', href: '/wellness' },
-    { name: 'Experiences', href: '/experiences' },
-    { name: 'Events', href: '/events' },
-    { name: 'Gallery', href: '/gallery' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Pages', href: '/pages' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileOpen, setIsMobileOpen] = useState(false);
-    const pathname = usePathname();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,68 +28,72 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu on route change
-    useEffect(() => {
-        setIsMobileOpen(false);
-    }, [pathname]);
-
     return (
-        <>
-            <header
-                className={clsx(styles.header, {
-                    [styles.scrolled]: isScrolled,
-                    [styles.mobileOpen]: isMobileOpen
-                })}
-            >
-                <div className={styles.container}>
-                    <Link href="/" className={styles.logo}>
-                        AMIKUS
-                    </Link>
+        <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
+            <div className={`container ${styles.container}`}>
+                <Link href="/" className={styles.logo}>
+                    HOTELOR
+                </Link>
 
-                    <nav className={styles.desktopNav}>
-                        {navLinks.map((link) => (
-                            <Link key={link.href} href={link.href} className={styles.navLink}>
-                                {link.name}
-                            </Link>
-                        ))}
-                    </nav>
+                <nav className={styles.desktopNav}>
+                    {navLinks.map((link) => (
+                        <Link key={link.name} href={link.href} className={styles.navLink}>
+                            {link.name}
+                        </Link>
+                    ))}
+                </nav>
 
-                    <div className={styles.actions}>
-                        <Button variant={isScrolled ? 'primary' : 'outline'} href="/book" className={styles.bookBtn}>
-                            Book Now
-                        </Button>
-                        <button
-                            className={styles.mobileToggle}
-                            onClick={() => setIsMobileOpen(!isMobileOpen)}
-                        >
-                            {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
+                <div className={styles.actions}>
+                    <div className={styles.searchIcon}>
+                        <Search size={20} />
                     </div>
+                    <Button
+                        variant="primary"
+                        size="sm"
+                        href="/book"
+                        style={{ backgroundColor: isScrolled ? '#021530' : '#2CC2C0' }}
+                    >
+                        BUY NOW
+                    </Button>
+                    <button
+                        className={styles.mobileToggle}
+                        onClick={() => setIsMobileMenuOpen(true)}
+                    >
+                        <Menu size={24} />
+                    </button>
                 </div>
-            </header>
+            </div>
 
             <AnimatePresence>
-                {isMobileOpen && (
+                {isMobileMenuOpen && (
                     <motion.div
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
+                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
                         className={styles.mobileMenu}
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
                     >
+                        <button
+                            className={styles.closeBtn}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            <X size={30} />
+                        </button>
                         <nav className={styles.mobileNav}>
                             {navLinks.map((link) => (
-                                <Link key={link.href} href={link.href} className={styles.mobileNavLink}>
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={styles.mobileNavLink}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
                                     {link.name}
                                 </Link>
                             ))}
-                            <Button variant="primary" href="/book" className={styles.mobileBookBtn}>
-                                Book Your Stay
-                            </Button>
                         </nav>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </>
+        </header>
     );
 }

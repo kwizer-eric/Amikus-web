@@ -1,0 +1,134 @@
+.section {
+    padding: var(--section-pad) 0;
+    /* Transparent background to show global noise/color */
+}
+
+.carouselContainer {
+    width: 100%;
+    overflow-x: auto;
+    padding: 2rem 0 4rem;
+    scrollbar-width: none;
+}
+
+.carouselContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel {
+    display: flex;
+    gap: 2.5rem;
+    width: max-content;
+    padding: 0 1rem;
+    cursor: grab;
+}
+
+.carousel:active {
+    cursor: grabbing;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-panel);
+    width: 380px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageWrapper {
+    height: 250px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+    transform: scale(1.1);
+}
+
+.priceTag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--c-midnight);
+    color: var(--c-white);
+    padding: 0.8rem 1.5rem;
+    border-top-right-radius: var(--radius-panel);
+    font-size: 0.8rem;
+    font-family: var(--font-sans);
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--c-gold);
+}
+
+.content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.roomName {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-white);
+    font-family: var(--font-serif);
+}
+
+.desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--c-mist);
+}
+
+.meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.bookBtn {
+    margin-top: auto;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    padding: 1rem;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    color: var(--c-white);
+}
+
+.bookBtn:hover {
+    background: var(--c-gold);
+    color: var(--c-midnight);
+    border-color: var(--c-gold);
+}

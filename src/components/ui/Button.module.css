@@ -2,61 +2,55 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    cursor: pointer;
-    font-family: var(--font-inter);
-    font-weight: 500;
-    letter-spacing: 0.05em;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-pill);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
     text-transform: uppercase;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    border: none;
     text-decoration: none;
+    white-space: nowrap;
 }
 
+/* Accent (Orange/Teal) */
 .primary {
-    background-color: var(--color-midnight-navy);
-    color: var(--color-mist-blue);
-    border: 1px solid var(--color-midnight-navy);
+    background-color: var(--color-accent);
+    color: var(--color-white);
 }
 
 .primary:hover {
-    background-color: var(--color-terracotta);
-    border-color: var(--color-terracotta);
-    color: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(214, 106, 24, 0.4);
 }
 
-.secondary {
-    background-color: var(--color-terracotta);
-    color: var(--color-white);
-}
-
-.secondary:hover {
-    background-color: var(--color-terracotta-dark);
-}
-
+/* Outline (Ghost) */
 .outline {
     background-color: transparent;
-    color: var(--color-midnight-navy);
-    border: 1px solid var(--color-midnight-navy);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-white);
 }
 
 .outline:hover {
-    background-color: var(--color-midnight-navy);
-    color: var(--color-white);
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
 }
 
 .sm {
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.5rem;
     font-size: 0.75rem;
 }
 
-.md {
-    padding: 0.75rem 2rem;
-    font-size: 0.875rem;
+.lg {
+    padding: 1.25rem 3.5rem;
+    font-size: 1rem;
 }
 
-.lg {
-    padding: 1rem 3rem;
-    font-size: 1rem;
+/* Special Hero Variant */
+.hero-btn {
+    box-shadow: var(--shadow-card);
 }

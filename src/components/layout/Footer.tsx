@@ -6,36 +6,38 @@ import styles from './Footer.module.css';
 export default function Footer() {
     return (
         <footer className={styles.footer}>
-            <div className={styles.container}>
-                <div className={styles.top}>
+            <div className="container-full">
+                <div className={styles.grid}>
                     <div className={styles.brand}>
-                        <h2 className={styles.logo}>AMIKUS</h2>
-                        <p className={styles.tagline}>Where luxury meets the heart of Rwanda.</p>
+                        <h2 className={styles.logo}>AMIKUS <br />RUHENGERI</h2>
+                        <p className="mono">Kigali, Rwanda — EST. 2024</p>
                     </div>
 
-                    <div className={styles.links}>
+                    <div className={styles.meta}>
                         <div className={styles.column}>
-                            <h3>Explore</h3>
+                            <h3>Navigation</h3>
                             <ul>
-                                <li><Link href="/rooms">Rooms & Suites</Link></li>
-                                <li><Link href="/dining">Dining</Link></li>
+                                <li><Link href="/rooms">Accommodations</Link></li>
+                                <li><Link href="/dining">Culinary</Link></li>
                                 <li><Link href="/wellness">Wellness</Link></li>
                                 <li><Link href="/experiences">Experiences</Link></li>
                             </ul>
                         </div>
                         <div className={styles.column}>
-                            <h3>Contact</h3>
+                            <h3>Connect</h3>
                             <ul>
                                 <li>Info@amikus.rw</li>
                                 <li>+250 788 123 456</li>
-                                <li>Kigali, Rwanda</li>
+                                <li>Instagram</li>
+                                <li>LinkedIn</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div className={styles.bottom}>
-                    <p>&copy; {new Date().getFullYear()} Amikus Hotel. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} AMIKUS HOSPITALITY GROUP</p>
+                    <p>PRIVACY — LEGAL</p>
                 </div>
             </div>
         </footer>
