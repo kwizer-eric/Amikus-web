@@ -14,8 +14,8 @@ const Home = () => {
         <>
             <Hero />
             <Introduction />
-            <Rooms />
             <Services />
+            <Rooms />
             <Features />
             <Attractions />
             <ElevateStay />
