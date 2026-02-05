@@ -4,16 +4,17 @@
   --color-primary: #FFA500;
   --color-dark: #1A1A1A;
   --color-light: #F5F5F5;
-  --font-serif: "Playfair Display", serif;
-  --font-sans: "Inter", sans-serif;
+  --font-serif: "Boska", serif;
+  --font-sans: "Boska", sans-serif;
 }
 
 /* Import Fonts */
+@import url('https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,600,700,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap');
 
 @layer base {
   body {
-    @apply font-sans text-dark bg-white antialiased;
+    @apply font-serif text-dark bg-white antialiased;
   }
 
   h1,

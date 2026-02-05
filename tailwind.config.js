@@ -12,8 +12,8 @@ export default {
         light: '#F5F5F5',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        serif: ['Boska', 'serif'],
+        sans: ['Boska', 'sans-serif'],
       },
     },
   },
