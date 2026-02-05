@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { motion } from 'framer-motion'
 
 const venues = [
@@ -37,7 +37,7 @@ const DiningPage = () => {
             {/* Removed Top Header Text as requested */}
 
             <div className="flex flex-col gap-0">
-                {venues.map((venue, index) => (
+                {venues.map((venue) => (
                     <div key={venue.id} className="min-h-screen flex items-center relative overflow-hidden group border-b border-white/10 last:border-0 sticky top-0 bg-dark">
 
                         {/* Background Image (Dimmed) */}

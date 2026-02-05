@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useMotionValue, animate } from 'framer-motion'
 
 const rooms = [
@@ -50,7 +50,6 @@ const rooms = [
 ]
 
 const Rooms = () => {
-    const [activeIndex, setActiveIndex] = useState(0)
     const containerRef = useRef<HTMLDivElement>(null)
 
     // Drag logic constraints can be calculated here if needed, 

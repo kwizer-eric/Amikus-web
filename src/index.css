@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import url('https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,600,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap');
 
 @theme {
   --color-primary: #FFA500;
@@ -7,10 +9,6 @@
   --font-serif: "Boska", serif;
   --font-sans: "Boska", sans-serif;
 }
-
-/* Import Fonts */
-@import url('https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,600,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap');
 
 @layer base {
   body {

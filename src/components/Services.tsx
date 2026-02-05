@@ -1,38 +1,36 @@
 import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const servicesData = [
     {
-        id: 'stay',
-        title: 'Luxury Accommodation',
-        description: 'Experience the ultimate comfort in our bedrooms nestled in the heart of Musanze City. Your home away from home.',
-        items: ['Master Bedrooms', 'En-suite Bathrooms', 'Scenic Views'],
-        image: 'https://images.unsplash.com/photo-1590490360182-c583ca327659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80', // Bedroom
-        icon: '🛏️'
+        id: 'bedroom',
+        title: 'Luxury Bedrooms',
+        image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80'
     },
     {
-        id: 'dining',
-        title: 'Restaurant & Coffee',
-        description: 'Savor the best food in our restaurant or relax at our coffee shop. From breakfast buffets to evening cocktails.',
-        items: ['Fine Dining Restaurant', 'Coffee Shop', 'Bar & Lounge'],
-        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80', // Restaurant/Coffee
-        icon: '☕'
+        id: 'meeting',
+        title: 'Meeting Hall',
+        image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d464?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
     },
     {
-        id: 'business',
-        title: 'Meetings & Events',
-        description: 'Host exceptional events in our fully equipped Meeting Hall. Perfect for conferences and corporate gatherings.',
-        items: ['Conference Hall', 'Fast Wi-Fi', 'Catering Services'],
-        image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d464?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80', // Meeting Hall
-        icon: '�'
+        id: 'restaurant',
+        title: 'Restaurant & Bar',
+        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
     },
     {
-        id: 'facilities',
-        title: 'Premium Facilities',
-        description: 'Enjoy hassle-free parking and exceptional service designed to make your stay memorable.',
-        items: ['Secure Car Parking', '24/7 Service', 'Modern Kitchen'],
-        image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80', // Parking/Entrance
-        icon: '🚗'
+        id: 'coffee',
+        title: 'Coffee Shop',
+        image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
+    },
+    {
+        id: 'kitchen',
+        title: 'Modern Kitchen',
+        image: 'https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
+    },
+    {
+        id: 'parking',
+        title: 'Car Parking',
+        image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
     }
 ]
 
@@ -40,74 +38,57 @@ const Services = () => {
     const [activeService, setActiveService] = useState(servicesData[0])
 
     return (
-        <section className="py-24 bg-dark text-white overflow-hidden">
-            <div className="container mx-auto px-6 h-full">
+        <section className="bg-[#F3EEE8] min-h-screen relative py-20">
+            {/* Header */}
+            <div className="container mx-auto px-6 mb-20 text-center">
+                <h2 className="text-5xl md:text-8xl font-serif text-dark leading-tight">
+                    Where Every Day is <br />
+                    <span className="italic font-light">Designed for You</span>
+                </h2>
+            </div>
 
-                <div className="flex flex-col md:flex-row gap-16 items-start">
+            <div className="container mx-auto px-6">
+                <div className="flex flex-col lg:flex-row gap-20">
 
-                    {/* Left Column: Navigation List */}
-                    <div className="w-full md:w-1/2 z-10">
-                        <h2 className="text-sm font-bold tracking-[0.2em] text-primary mb-12 uppercase">
-                            Curated Experiences
-                        </h2>
-
-                        <div className="space-y-8">
+                    {/* Left Column: Fixed Image (Sticky) */}
+                    <div className="w-full lg:w-1/2 h-[50vh] lg:h-[80vh] sticky top-20 rounded-2xl overflow-hidden shadow-2xl">
+                        <div className="relative w-full h-full">
                             {servicesData.map((service) => (
-                                <div
+                                <img
                                     key={service.id}
-                                    onMouseEnter={() => setActiveService(service)}
-                                    onClick={() => setActiveService(service)} // Mobile support
-                                    className={`cursor-pointer group transition-all duration-300 ${activeService.id === service.id ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
-                                >
-                                    <div className="flex items-center justify-between mb-2">
-                                        <h3 className="text-3xl md:text-4xl font-serif">{service.title}</h3>
-                                        <motion.span
-                                            animate={{ rotate: activeService.id === service.id ? 90 : 0 }}
-                                            className="text-2xl hidden md:block"
-                                        >
-                                            →
-                                        </motion.span>
-                                    </div>
-
-                                    {/* Expanded Content for Active Item (Desktop) or always slightly visible */}
-                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeService.id === service.id ? 'max-h-40 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
-                                        <p className="text-gray-400 mb-4 font-light text-lg">
-                                            {service.description}
-                                        </p>
-                                        <ul className="flex flex-wrap gap-4">
-                                            {service.items.map((item, idx) => (
-                                                <li key={idx} className="text-sm border border-white/20 rounded-full px-4 py-1 text-gray-300">
-                                                    {item}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
+                                    src={service.image}
+                                    alt={service.title}
+                                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${activeService.id === service.id ? 'opacity-100' : 'opacity-0'}`}
+                                />
                             ))}
+                            <div className="absolute inset-0 bg-black/10"></div>
+
+                            {/* Logo Overlay */}
+                            <div className="absolute top-8 left-8 text-white font-serif text-xl z-10 flex items-center gap-2">
+                                <span className="text-2xl">✷</span>
+                                <span>Amikus</span>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Right Column: Dynamic Image Display */}
-                    <div className="w-full md:w-1/2 relative h-[500px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-                        <AnimatePresence mode="wait">
-                            <motion.img
-                                key={activeService.id}
-                                src={activeService.image}
-                                alt={activeService.title}
-                                initial={{ opacity: 0, scale: 1.1 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.7, ease: "easeOut" }}
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                        </AnimatePresence>
-
-                        {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-
-                        <div className="absolute bottom-8 left-8">
-                            <span className="text-6xl mb-2 block">{activeService.icon}</span>
-                            <p className="text-xs font-bold tracking-widest uppercase text-white/80">Explore {activeService.title}</p>
+                    {/* Right Column: Scrollable List (Reel) */}
+                    <div className="w-full lg:w-1/2 flex flex-col justify-center py-20">
+                        <div className="space-y-0">
+                            {servicesData.map((service) => (
+                                <motion.div
+                                    key={service.id}
+                                    className="flex flex-col justify-center min-h-[25vh] border-b border-gray-300 last:border-0"
+                                    onViewportEnter={() => setActiveService(service)}
+                                    viewport={{ margin: "-45% 0px -45% 0px" }}
+                                >
+                                    <motion.h3
+                                        className={`text-4xl md:text-6xl font-serif transition-all duration-500 cursor-pointer py-10 ${activeService.id === service.id ? 'text-dark opacity-100 pl-4' : 'text-gray-300 opacity-60'}`}
+                                        onClick={() => setActiveService(service)}
+                                    >
+                                        {service.title}
+                                    </motion.h3>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 
