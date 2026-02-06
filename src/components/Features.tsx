@@ -1,5 +1,8 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import res1 from '../assets/images/res1.jpg'
+import res3 from '../assets/images/res3.jpg'
+import res4 from '../assets/images/res4.jpg'
 
 interface SectionProps {
     title: string;
@@ -64,9 +67,9 @@ const HorizontalSection = ({ title, description, images, reverse = false }: Sect
 const Features = () => {
     // Images for Restaurant
     const restaurantImages = [
-        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80", // Interior
-        "https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80", // Food
-        "https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"  // Drinks
+        res1, // Interior
+        res3, // Food
+        res4  // Drinks
     ]
 
     // Images for Events

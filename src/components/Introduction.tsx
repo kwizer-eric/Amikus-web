@@ -1,5 +1,6 @@
 
 import { motion } from 'framer-motion'
+import resImage from '../assets/images/res1.jpg'
 
 const Introduction = () => {
     return (
@@ -46,9 +47,9 @@ const Introduction = () => {
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1629140727571-9b5c6f7c6b8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                                src={resImage}
                                 alt="Modern architecture with warm lighting"
-                                className="w-full h-full object-cover grayscale transition-all duration-[1.5s] hover:grayscale-0 hover:scale-105"
+                                className="w-full h-full object-cover transition-all duration-[1.5s] hover:scale-105"
                             />
                         </motion.div>
 

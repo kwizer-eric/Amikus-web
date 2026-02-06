@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
-import { motion, useMotionValue, animate } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const rooms = [
     {
@@ -50,7 +49,7 @@ const rooms = [
 ]
 
 const Rooms = () => {
-    const containerRef = useRef<HTMLDivElement>(null)
+
 
     // Drag logic constraints can be calculated here if needed, 
     // but for simplicity we'll use a snap-to-center logic or simple overflow for this demo.
@@ -76,7 +75,7 @@ const Rooms = () => {
                 className="flex gap-6 px-6 md:pl-20 overflow-x-auto pb-10 pt-4 hide-scrollbar snap-x snap-mandatory"
                 whileTap={{ cursor: "grabbing" }}
             >
-                {rooms.map((room, index) => (
+                {rooms.map((room) => (
                     <motion.div
                         key={room.id}
                         className="relative min-w-[80vw] md:min-w-[500px] h-[400px] md:h-[450px] snap-center rounded-2xl overflow-hidden shadow-xl group cursor-pointer"

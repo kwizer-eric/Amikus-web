@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
+import resImage from '../assets/images/res1.jpg'
 
 const servicesData = [
     {
@@ -15,7 +16,7 @@ const servicesData = [
     {
         id: 'restaurant',
         title: 'Restaurant & Bar',
-        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
+        image: resImage
     },
     {
         id: 'coffee',
@@ -40,7 +41,7 @@ const Services = () => {
     return (
         <section className="bg-[#F3EEE8] min-h-screen relative py-20">
             {/* Header */}
-            <div className="container mx-auto px-6 mb-20 text-center">
+            <div className="container mx-auto px-7 mb-20 text-center">
                 <h2 className="text-5xl md:text-8xl font-serif text-dark leading-tight">
                     Where Every Day is <br />
                     <span className="italic font-light">Designed for You</span>

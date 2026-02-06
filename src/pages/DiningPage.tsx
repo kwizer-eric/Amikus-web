@@ -40,14 +40,14 @@ const DiningPage = () => {
                 {venues.map((venue) => (
                     <div key={venue.id} className="min-h-screen flex items-center relative overflow-hidden group border-b border-white/10 last:border-0 sticky top-0 bg-dark">
 
-                        {/* Background Image (Dimmed) */}
-                        <div className="absolute inset-0 z-0 opacity-40 transition-opacity duration-700 group-hover:opacity-60">
+                        {/* Background Image */}
+                        <div className="absolute inset-0 z-0 opacity-80 transition-opacity duration-700 group-hover:opacity-100">
                             <img
                                 src={venue.image}
                                 alt={venue.name}
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 transform scale-105 group-hover:scale-100"
+                                className="w-full h-full object-cover transition-all duration-1000 transform scale-105 group-hover:scale-100"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+                            <div className="absolute inset-0 bg-black/20"></div>
                         </div>
 
                         <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

@@ -56,8 +56,9 @@ const Navbar = () => {
         { name: 'Gallery', href: '/gallery', type: 'route' },
         { name: 'Dining', href: '/dining', type: 'route' },
         { name: 'Accommodation', href: '/accommodation', type: 'route' },
-        { name: 'Experience', href: '#experience', type: 'hash' },
-        { name: 'Contact', href: '#contact', type: 'hash' },
+        { name: 'Experience', href: '/experience', type: 'route' },
+        { name: 'Contact', href: '/contact', type: 'route' },
+        { name: 'Book', href: '/booking', type: 'route' },
     ]
 
     const getLinkProps = (link: { name: string, href: string, type: string }) => {

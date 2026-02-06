@@ -1,4 +1,5 @@
 
+import heroImage from '../assets/images/hero.jpg'
 
 const Hero = () => {
     return (
@@ -7,7 +8,7 @@ const Hero = () => {
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')", // Fallback luxury hotel image
+                    backgroundImage: `url(${heroImage})`,
                 }}
             >
                 <div className="absolute inset-0 bg-black/30"></div> {/* Overlay */}
@@ -20,12 +21,10 @@ const Hero = () => {
                     Experience the ultimate <br /> comfort and relaxation
                 </h1>
 
-                <p className="text-white/90 max-w-2xl text-sm md:text-base font-light mb-12 animate-fade-in-up delay-200">
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                </p>
 
                 {/* Booking Widget */}
-                <div className="bg-white rounded shadow-2xl p-4 md:p-6 w-full max-w-5xl grid grid-cols-1 md:grid-cols-4 gap-4 items-end animate-fade-in-up delay-300">
+                <div className="translate-y-2 bg-white rounded shadow-2xl p-4 md:p-6 w-full max-w-5xl grid grid-cols-1 md:grid-cols-4 gap-4 items-end animate-fade-in-up delay-300">
+
 
                     {/* Check In/Out */}
                     <div className="flex flex-col text-left group">
