@@ -27,9 +27,7 @@ const Introduction = () => {
                             Amikus <br />
                             <span className="italic font-light">Sanctuary</span>
                         </h2>
-                        <p className="text-gray-600 text-lg leading-relaxed mb-10 font-light max-w-md">
-                            Nestled in the pristine heart of the coast, this boutique sanctuary blends bohemian charm with serene garden courtyards and panoramic ocean views. A place where time stands still.
-                        </p>
+                        Welcome to Amikus Hotel, located in the middle of Musanze city. A boutique sanctuary blending bohemian charm with serene garden courtyards and breathtaking views. A place where time stands still.
                         <a href="#about" className="inline-block text-dark text-xs font-bold uppercase tracking-[0.2em] border-b border-dark pb-1 hover:text-primary hover:border-primary transition-colors">
                             Learn More
                         </a>
