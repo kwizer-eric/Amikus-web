@@ -1,87 +1,163 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 
 const testimonials = [
     {
         id: 1,
-        quote: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
-        author: "Ragnar Lothbrok",
-        title: "Creative Director",
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80"
-    },
-    {
-        id: 2,
         quote: "The attention to detail at Amikus is simply unparalleled. From the moment you step in, you are transported to a world of luxury and calm.",
         author: "Sarah Jenkins",
         title: "Travel Blogger",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+        location: "London, UK",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        id: 2,
+        quote: "An unforgettable experience. The staff went above and beyond to ensure our stay was perfect. The dining was exquisite and the views breathtaking.",
+        author: "Michael Chen",
+        title: "Architect",
+        location: "Singapore",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
     },
     {
         id: 3,
-        quote: "An unforgettable experience. The staff went above and beyond to ensure our stay was perfect. The dining was exquisite.",
-        author: "Michael Chen",
-        title: "Architect",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80"
+        quote: "A true sanctuary in the city. The design philosophy perfectly balances modern aesthetics with natural elements. I've never slept better.",
+        author: "Elena Rodriguez",
+        title: "Interior Designer",
+        location: "Madrid, Spain",
+        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"
     }
 ]
 
 const Testimonials = () => {
     const [current, setCurrent] = useState(0)
+    const [direction, setDirection] = useState(0)
 
-    const next = () => setCurrent((current + 1) % testimonials.length)
-    const prev = () => setCurrent((current - 1 + testimonials.length) % testimonials.length)
+    const next = () => {
+        setDirection(1)
+        setCurrent((current + 1) % testimonials.length)
+    }
+
+    const prev = () => {
+        setDirection(-1)
+        setCurrent((current - 1 + testimonials.length) % testimonials.length)
+    }
+
+    const variants = {
+        enter: (direction: number) => ({
+            x: direction > 0 ? 50 : -50,
+            opacity: 0,
+        }),
+        center: {
+            x: 0,
+            opacity: 1,
+        },
+        exit: (direction: number) => ({
+            x: direction > 0 ? -50 : 50,
+            opacity: 0,
+        }),
+    }
 
     return (
-        <section className="py-20 bg-light flex flex-col items-center justify-center overflow-hidden">
-            <div className="container mx-auto px-6 max-w-4xl relative">
+        <section className="bg-dark text-[#F3EEE8] py-24 lg:py-32 relative overflow-hidden">
+            {/* Background Texture/Pattern */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                <svg width="100%" height="100%">
+                    <filter id="noise">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+                    </filter>
+                    <rect width="100%" height="100%" filter="url(#noise)" />
+                </svg>
+            </div>
 
-                {/* Decorative big quote */}
-                <div className="absolute top-0 left-0 text-[10rem] font-serif leading-none text-gray-200 -z-10 opacity-50 select-none">“</div>
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
-                <div className="relative min-h-[300px] flex flex-col justify-center items-center text-center">
-                    <AnimatePresence mode='wait'>
+                    {/* Left Column: Content */}
+                    <div>
                         <motion.div
-                            key={current}
-                            initial={{ opacity: 0, y: 15 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -15 }}
-                            transition={{ duration: 0.5 }}
-                            className="flex flex-col items-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="flex items-center gap-4 mb-12"
                         >
-                            <p className="text-2xl md:text-3xl font-serif text-dark mb-8 leading-tight max-w-3xl">
-                                {testimonials[current].quote}
-                            </p>
+                            <span className="h-[1px] w-12 bg-primary/50"></span>
+                            <span className="text-xs uppercase tracking-[0.3em] text-primary/80 font-medium">Guest Stories</span>
+                        </motion.div>
 
-                            <div className="flex flex-col items-center">
-                                <div className="w-10 h-10 rounded-full overflow-hidden mb-3 grayscale opacity-80">
+                        <div className="relative min-h-[300px] md:min-h-[250px]">
+                            <AnimatePresence mode="wait" custom={direction}>
+                                <motion.div
+                                    key={current}
+                                    custom={direction}
+                                    variants={variants}
+                                    initial="enter"
+                                    animate="center"
+                                    exit="exit"
+                                    transition={{ duration: 0.5, ease: "easeOut" }}
+                                >
+                                    <Quote className="w-12 h-12 text-primary/20 mb-8" />
+
+                                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-[1.1] mb-10 text-white/90">
+                                        "{testimonials[current].quote}"
+                                    </h3>
+
+                                    <div className="flex flex-col gap-1">
+                                        <h4 className="text-lg font-serif">{testimonials[current].author}</h4>
+                                        <p className="text-sm text-white/50 uppercase tracking-widest text-[10px]">
+                                            {testimonials[current].title} — {testimonials[current].location}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
+
+                        {/* Controls */}
+                        <div className="flex items-center gap-4 mt-12">
+                            <button
+                                onClick={prev}
+                                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-white/30 transition-all duration-300 group"
+                                aria-label="Previous testimonial"
+                            >
+                                <ChevronLeft className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+                            </button>
+                            <button
+                                onClick={next}
+                                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-white/30 transition-all duration-300 group"
+                                aria-label="Next testimonial"
+                            >
+                                <ChevronRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Right Column: Image */}
+                    <div className="relative order-first lg:order-last">
+                        <div className="aspect-[4/5] md:aspect-square lg:aspect-[4/5] overflow-hidden relative">
+                            {/* Decorative Frame */}
+                            <div className="absolute inset-4 border border-white/10 z-20 pointer-events-none"></div>
+
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={current}
+                                    initial={{ opacity: 0, scale: 1.1 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.7 }}
+                                    className="absolute inset-0 bg-dark"
+                                >
                                     <img
                                         src={testimonials[current].image}
                                         alt={testimonials[current].author}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-cover opacity-80"
                                     />
-                                </div>
-                                <h4 className="font-bold text-dark text-[10px] uppercase tracking-[0.2em] mb-1">{testimonials[current].author}</h4>
-                                <p className="text-[9px] text-gray-400 font-medium uppercase tracking-[0.1em]">{testimonials[current].title}</p>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-
-                {/* Micro Navigation */}
-                <div className="flex justify-center gap-6 mt-10 items-center">
-                    <button onClick={prev} className="text-[10px] font-bold uppercase tracking-widest text-gray-300 hover:text-dark transition-colors">Prev</button>
-                    <div className="flex gap-2">
-                        {testimonials.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrent(index)}
-                                className={`w-1 h-1 rounded-full transition-all duration-300 ${current === index ? 'bg-dark scale-150' : 'bg-gray-300'
-                                    }`}
-                                aria-label={`Go to testimonial ${index + 1}`}
-                            />
-                        ))}
+                                    {/* Gradient Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
                     </div>
-                    <button onClick={next} className="text-[10px] font-bold uppercase tracking-widest text-gray-300 hover:text-dark transition-colors">Next</button>
+
                 </div>
             </div>
         </section>
