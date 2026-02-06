@@ -23,7 +23,7 @@ const Introduction = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-5xl md:text-7xl font-serif text-dark leading-[0.9] mb-8">
+                        <h2 className="text-4xl md:text-6xl font-serif text-dark leading-[0.9] mb-8">
                             Amikus <br />
                             <span className="italic font-light">Sanctuary</span>
                         </h2>
